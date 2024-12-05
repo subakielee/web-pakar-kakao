@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pakar Hama Kakao</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa; /* Warna biru muda */
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            color: #00796b; /* Warna hijau kebiruan */
+        }
+        .search-box {
+            margin-top: 20px;
+        }
+        .search-box input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-box button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #00796b;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-box button:hover {
+            background-color: #004d40;
+        }
+        .result {
+            margin-top: 30px;
+            text-align: left;
+            color: #555;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pakar Hama Kakao</h1>
+        <p>Masukkan nama hama untuk mengetahui cara menanggulangi dan pencegahannya.</p>
+        <div class="search-box">
+            <input type="text" id="search" placeholder="Contoh: Penggerek Buah Kakao">
+            <button onclick="searchHama()">Cari</button>
+        </div>
+        <div class="result" id="result">
+            <!-- Hasil pencarian akan muncul di sini -->
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2024 Pakar Hama Kakao. All rights reserved.
+    </div>
+
+    <script>
+        function searchHama() {
+            const searchValue = document.getElementById('search').value.toLowerCase();
+            const resultDiv = document.getElementById('result');
+            let resultText = "";
+
+            // Data hama dan solusi
+            const hamaData = {
+                "penggerek buah kakao": "Cara menanggulangi: Menggunakan insektisida yang sesuai. Pencegahan: Lakukan sanitasi kebun secara rutin.",
+                "ulat api": "Cara menanggulangi: Pangkas daun yang terinfestasi. Pencegahan: Gunakan musuh alami seperti burung pemakan serangga.",
+                "kepik penghisap buah": "Cara menanggulangi: Gunakan perangkap feromon. Pencegahan: Pelihara tanaman penutup tanah untuk menekan populasinya."
+            };
+
+            if (searchValue in hamaData) {
+                resultText = `<h3>${searchValue.toUpperCase()}</h3><p>${hamaData[searchValue]}</p>`;
+            } else {
+                resultText = `<p>Hama tidak ditemukan. Pastikan ejaan benar atau tambahkan data baru ke sistem.</p>`;
+            }
+
+            resultDiv.innerHTML = resultText;
+        }
+    </script>
+</body>
+</html>
